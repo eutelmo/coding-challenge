@@ -1,13 +1,17 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-//import { useBalance } from '../../hooks/useBalance';
-//import BalanceSkeleton from '../BalanceSkeleton';
 
 //Styles
 import { styles } from './styles';
 
+//Skeleton Screen
+import SummarySkeleton from '../SummarySkeleton';
+
 
 export default function Summary() {
+    const isLoading = true;
+
+    if (isLoading) return <SummarySkeleton />
 
     return (
         <View style={styles.container}>

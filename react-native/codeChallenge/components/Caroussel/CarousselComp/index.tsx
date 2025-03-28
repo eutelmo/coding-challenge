@@ -1,23 +1,27 @@
-import React from 'react'
-import { FlatList, View, Image } from 'react-native';
+import React, { useEffect } from 'react'
+import { useProducts } from '@/utils/hooks/useProducts';
+import { FlatList, View, Image, Text } from 'react-native';
 
 //Types
-import { ProductImage } from '@/utils/types/ProductImage';
+import { ProductImage } from '@/utils/types/ProductImageProps';
 
 //Styles
 import { styles } from './style';
 
-const images: ProductImage[] = [
-    { id: '1', image: 'http://loremflickr.com/640/480/technics' },
-    { id: '2', image: 'http://loremflickr.com/640/480/nature' },
-    { id: '3', image: 'http://loremflickr.com/640/480/city' },
-];
 
 export default function CarousselComp() {
+
+    const { productsData, isLoading, refetch } = useProducts();
+
+    useEffect(() => {
+        refetch();
+    }, [refetch]);
+
+    if (isLoading) return <Text> LOading </Text>
     return (
         <View style={styles.container}>
             <FlatList
-                data={images}
+                data={productsData}
                 horizontal
                 keyExtractor={(item) => item.id}
                 renderItem={({ item }) => (

@@ -6,7 +6,10 @@ import { styles } from './styles';
 import { COLORS } from '@/Styles/global';
 
 //Types
-import { Transaction } from '@/utils/types/Transactions';
+import { Transaction } from '@/utils/types/TransactionsProps';
+
+//SkeletonScreen
+import TransactionListSkeleton from '../TransactionListSkeleton';
 
 
 const transactions: Transaction[] = [
@@ -17,16 +20,21 @@ const transactions: Transaction[] = [
 ];
 
 
+export default function TransactionList({ navigation, isOpened }: { navigation: any; isOpened: boolean }) {
+    const isLoading = true;
 
-export default function TransactionList({ navigation }: any) {
+    if (isLoading) return <TransactionListSkeleton />
+
     return (
         <View style={styles.container}>
             <View style={styles.header}>
                 <Text style={styles.title}>Recent transactions</Text>
-                <TouchableOpacity
-                    onPress={() => navigation.navigate("TransactionScreen")}>
-                    <Text style={styles.link}>See all</Text>
-                </TouchableOpacity>
+                {!isOpened ? (
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate("TransactionScreen")}>
+                        <Text style={styles.link}>See all</Text>
+                    </TouchableOpacity>
+                ) : null}
             </View>
             {transactions.map((item) => (
                 <View key={item.id} style={styles.transaction}>
