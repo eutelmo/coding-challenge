@@ -6,6 +6,8 @@ export const COLORS = {
     link: "#364fc7",
     green: "#5c940d",
     orange: "#e47404",
+    gradientGreyDark: "#e0e0e0",
+    gradientGreyLight: "#f0f0f0",
 
     error: "#FAA19B",
     warning: "#E07F20",
