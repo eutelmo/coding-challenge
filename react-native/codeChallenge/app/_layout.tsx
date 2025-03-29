@@ -8,6 +8,7 @@ import RootApp from './App';
 
 //Provider
 import { ProductsProvider } from '@/context/productsDataContext';
+import { TransactionProvider } from '@/context/transactionsDataContext';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -29,7 +30,9 @@ export default function RootLayout() {
 
   return (
     <ProductsProvider>
-      <RootApp />
+      <TransactionProvider>
+        <RootApp />
+      </TransactionProvider>
     </ProductsProvider>
   );
 }
