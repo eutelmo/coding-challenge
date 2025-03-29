@@ -9,12 +9,10 @@ import SummarySkeleton from '../SummarySkeleton';
 
 //Utils
 import { useBalance } from '@/utils/hooks/useBalance';
-import { useTransaction } from '@/utils/hooks/useTransaction';
 
 
 export default function Summary() {
     const { balance, isLoading } = useBalance();
-    const { transactions, refetch } = useTransaction();
 
     if (isLoading) return <SummarySkeleton />
 

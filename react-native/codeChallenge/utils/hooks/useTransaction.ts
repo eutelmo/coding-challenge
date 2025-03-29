@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useMemo } from 'react'
 
 //Utils
 import { useTransactionContext } from '@/context/transactionsDataContext'
@@ -25,6 +25,8 @@ export function useTransaction() {
             setTransactionsLoading(false);
         }
     }, [setTransactions, setTransactionsError, setTransactionsLoading]);
+
+
 
     return {
         transactions,

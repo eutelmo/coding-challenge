@@ -17,7 +17,7 @@ export function TransactionProvider({ children }: ContextProps) {
     useEffect(() => {
         console.log("transaction", transactions);
         setBalance(calculateBalance(transactions));
-    }), [transactions];
+    }, [transactions]);
 
     function calculateBalance(transactions: Transaction[]) {
         return transactions
