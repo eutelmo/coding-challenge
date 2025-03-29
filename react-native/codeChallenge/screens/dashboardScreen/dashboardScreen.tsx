@@ -16,14 +16,19 @@ import TransactionList from '@/components/shared/TrasactionList/TransactionListC
 import CarousselComp from '@/components/Caroussel/CarousselComp';
 import ModalComponent from '@/components/shared/Modal';
 import SnackBarComponent from '@/components/shared/SnackBars';
+import { useTransactionContext } from '@/context/transactionsDataContext';
+import { useProductsContext } from '@/context/productsDataContext';
 
 export default function DashboardScreen({ navigation }: any) {
     const { isLoading, refetch } = useTransaction();
+
+    //Hook for modal
     const {
         isVisible,
         handleCloseModal,
     } = useModalContext();;
 
+    //hook for snackbar
     const {
         isErrorGetProducts,
         closeSnackBarGetProducts,
@@ -40,6 +45,16 @@ export default function DashboardScreen({ navigation }: any) {
         isErrorGeneral,
         closeSnackBarGeneral,
     } = useSnackBarContext();
+
+    //hook for Products
+    const {
+        productsError
+    } = useProductsContext();
+
+    //Hook for Transactions
+    const {
+        transactionsError
+    } = useTransactionContext();
 
 
     return (
@@ -59,14 +74,14 @@ export default function DashboardScreen({ navigation }: any) {
 
             {/* SnackBar for get products error */}
             <SnackBarComponent
-                message="Error fetching products!"
+                message={productsError}
                 isVisible={isErrorGetProducts}
                 closeFunction={closeSnackBarGetProducts}
             />
 
             {/* SnackBar for get transactions error */}
             <SnackBarComponent
-                message="Error fetching transactions!"
+                message={transactionsError}
                 isVisible={isErrorGetTransactions}
                 closeFunction={closeSnackBarGetTransactions}
             />

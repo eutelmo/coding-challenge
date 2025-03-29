@@ -7,8 +7,8 @@ export interface TransactionContextType {
     transactionsLoading: boolean;
     setTransactionsLoading: (loading: boolean) => void;
 
-    transactionsError: Error | null;
-    setTransactionsError: (error: Error | null) => void;
+    transactionsError: string | null;
+    setTransactionsError: (error: string | null) => void;
 
     balance: number;
     setBalance: (balance: number) => void;

@@ -19,7 +19,7 @@ import { useTransaction } from '@/utils/hooks/useTransaction';
 import TransactionsItem from '../TransactionsItem';
 
 //Context
-import { ModalContext } from '@/context/modelContext';
+import { ModalContext } from '@/context/modalContext';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 
