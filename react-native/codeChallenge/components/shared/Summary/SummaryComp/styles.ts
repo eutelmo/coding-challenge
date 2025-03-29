@@ -1,4 +1,5 @@
 import { COLORS } from '@/Styles/global';
+import sizes from '@/utils/sizes';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
@@ -7,7 +8,7 @@ export const styles = StyleSheet.create({
 
     },
     title: {
-        fontSize: 18,
+        fontSize: sizes.FONT_SIZE_18,
         fontWeight: 'bold',
         marginBottom: 8,
     },
@@ -21,10 +22,10 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
     },
     label: {
-        fontSize: 16,
+        fontSize: sizes.FONT_SIZE_16,
     },
     balance: {
-        fontSize: 16,
+        fontSize: sizes.FONT_SIZE_16,
         fontWeight: 'bold',
     },
 });

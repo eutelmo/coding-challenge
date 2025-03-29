@@ -8,7 +8,7 @@ import {
 } from "react-native";
 
 //Context 
-import { ModalContext } from "@/context/modalContext";
+import { useModalContext } from "@/utils/hooks/useModal";
 
 //Styles
 import { styles } from "./styles";
@@ -16,7 +16,7 @@ import { COLORS } from "@/Styles/global";
 
 
 export default function ModalComponent() {
-    const { modalContent, handleCloseModal } = useContext(ModalContext);
+    const { modalContent, handleCloseModal } = useModalContext();
 
     if (!modalContent) {
         return null;
@@ -33,7 +33,6 @@ export default function ModalComponent() {
     const time = formattedDate.toLocaleTimeString('pt-BR', {
         hour: '2-digit',
         minute: '2-digit',
-        second: '2-digit',
     });
 
     return (
