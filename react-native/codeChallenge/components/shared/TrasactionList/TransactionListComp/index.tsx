@@ -26,6 +26,7 @@ export default function TransactionList({ navigation, isOpened, maxNumber }: { n
     const { transactions, isLoading, refetch } = useTransaction();
     const [selectedItem, setSelecteItem] = useState<Transaction>();
 
+
     useEffect(() => {
         refetch();
     }, [refetch])
@@ -48,6 +49,7 @@ export default function TransactionList({ navigation, isOpened, maxNumber }: { n
 
             <FlatList
                 data={transactionsForHomeScreen}
+                style={styles.listContainer}
                 keyExtractor={(item, index) => `${item.id + index}`}
                 renderItem={({ item }) => (
                     <TransactionsItem item={item} onClick={() => handleOpenModal(item)} />

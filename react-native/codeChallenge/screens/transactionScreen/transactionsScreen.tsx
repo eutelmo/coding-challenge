@@ -83,7 +83,7 @@ export default function TransactionScreen({ navigation }: any) {
                 closeFunction={closeSnackBarGeneral}
             />
             <SafeAreaView style={styles.container}>
-                <View>
+                <View style={styles.bodyCompenent}>
                     <Summary />
                     <TransactionList navigation={navigation} isOpened={true} />
                 </View>

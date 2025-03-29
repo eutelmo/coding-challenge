@@ -1,4 +1,5 @@
 import { COLORS } from "@/Styles/global";
+import sizes from "@/utils/sizes";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
@@ -11,26 +12,26 @@ export const styles = StyleSheet.create({
     header: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginBottom: 10,
+        marginBottom: sizes.scaleWidthSize(10),
     },
     title: {
-        fontSize: 16,
+        fontSize: sizes.FONT_SIZE_18,
         fontWeight: 'bold',
     },
     link: {
-        fontSize: 14,
+        fontSize: sizes.FONT_SIZE_14,
         color: COLORS.link,
     },
     transaction: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        paddingVertical: 5,
+        paddingVertical: sizes.scaleWidthSize(5),
     },
     label: {
-        fontSize: 14,
+        fontSize: sizes.FONT_SIZE_14,
     },
     amount: {
-        fontSize: 14,
+        fontSize: sizes.FONT_SIZE_14,
         fontWeight: 'bold',
     },
 });

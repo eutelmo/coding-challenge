@@ -17,10 +17,9 @@ export default function RootApp() {
         <View style={globalStyles.container}>
             <Stack.Navigator
                 initialRouteName="DashboardScreen"
-                screenOptions={{ headerShown: false }}
             >
                 <Stack.Screen name="DashboardScreen" component={DashboardScreen} options={{ headerShown: false }} />
-                <Stack.Screen name="TransactionScreen" component={TransactionScreen} />
+                <Stack.Screen name="TransactionScreen" component={TransactionScreen} options={{ title: 'Transactions' }} />
             </Stack.Navigator>
         </View>
     )

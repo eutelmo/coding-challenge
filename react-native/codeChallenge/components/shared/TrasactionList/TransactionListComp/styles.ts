@@ -1,9 +1,10 @@
 import { COLORS } from "@/Styles/global";
+import sizes from "@/utils/sizes";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
     container: {
-        padding: 10,
+        padding: sizes.scaleWidthSize(10),
         borderWidth: 1,
         borderColor: COLORS.black,
         borderRadius: 5,
@@ -11,26 +12,29 @@ export const styles = StyleSheet.create({
     header: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginBottom: 10,
+        marginBottom: sizes.scaleWidthSize(10),
     },
     title: {
-        fontSize: 16,
+        fontSize: sizes.FONT_SIZE_16,
         fontWeight: 'bold',
     },
     link: {
-        fontSize: 14,
+        fontSize: sizes.FONT_SIZE_14,
         color: COLORS.link,
     },
     transaction: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        paddingVertical: 5,
+        paddingVertical: sizes.scaleWidthSize(5),
     },
     label: {
-        fontSize: 14,
+        fontSize: sizes.FONT_SIZE_14,
     },
     amount: {
-        fontSize: 14,
+        fontSize: sizes.FONT_SIZE_14,
         fontWeight: 'bold',
     },
+    listContainer: {
+        maxHeight: sizes.HEIGHT * sizes.scaleHeightSize(1.3),
+    }
 });

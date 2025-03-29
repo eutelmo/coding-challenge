@@ -120,10 +120,12 @@ export default function DashboardScreen({ navigation }: any) {
                     showsVerticalScrollIndicator={false}
                 >
 
-                    <View>
-                        <CarousselComp />
+
+                    <CarousselComp />
+                    <View style={styles.bodyCompenent}>
                         <Summary />
                         <TransactionList navigation={navigation} isOpened={false} maxNumber={3} />
+
                     </View>
                 </ScrollView>
             </SafeAreaView>
