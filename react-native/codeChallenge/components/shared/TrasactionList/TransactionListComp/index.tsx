@@ -14,17 +14,14 @@ import TransactionListSkeleton from '../TransactionListSkeleton';
 
 //Utils
 import { useTransaction } from '@/utils/hooks/useTransaction';
+import { useModalContext } from '@/utils/hooks/useModal';
 
 //Components
 import TransactionsItem from '../TransactionsItem';
 
-//Context
-import { ModalContext } from '@/context/modalContext';
-import { SafeAreaView } from 'react-native-safe-area-context';
-
 
 export default function TransactionList({ navigation, isOpened, maxNumber }: { navigation: any; isOpened: boolean, maxNumber?: number }) {
-    const { handleOpenModal } = useContext(ModalContext);
+    const { handleOpenModal } = useModalContext();
 
     const { transactions, isLoading, refetch } = useTransaction();
     const [selectedItem, setSelecteItem] = useState<Transaction>();
