@@ -17,13 +17,13 @@ export default function CarousselComp() {
         refetch();
     }, [refetch]);
 
-    if (isLoading) return <Text> LOading </Text>
+    if (isLoading) return <Text> Loading... </Text>
     return (
         <View style={styles.container}>
             <FlatList
                 data={productsData}
                 horizontal
-                keyExtractor={(item) => item.id}
+                keyExtractor={(item, index) => `${item.id}+${index}`}
                 renderItem={({ item }) => (
                     <Image source={{ uri: item.image }} style={styles.image} />
                 )}
