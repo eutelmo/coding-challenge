@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { TouchableOpacity, View, Text } from 'react-native';
+import { FlatList } from 'react-native-gesture-handler';
 
 //Styles
 import { styles } from './styles';
@@ -13,12 +14,20 @@ import TransactionListSkeleton from '../TransactionListSkeleton';
 
 //Utils
 import { useTransaction } from '@/utils/hooks/useTransaction';
-import { FlatList } from 'react-native-gesture-handler';
+
+//Components
+import TransactionsItem from '../TransactionsItem';
+
+//Context
+import { ModalContext } from '@/context/modelContext';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 
-export default function TransactionList({ navigation, isOpened, maxNumber }: { navigation: any; isOpened: boolean, maxNumber: number }) {
+export default function TransactionList({ navigation, isOpened, maxNumber }: { navigation: any; isOpened: boolean, maxNumber?: number }) {
+    const { handleOpenModal } = useContext(ModalContext);
+
     const { transactions, isLoading, refetch } = useTransaction();
+    const [selectedItem, setSelecteItem] = useState<Transaction>();
 
     useEffect(() => {
         refetch();
@@ -44,12 +53,7 @@ export default function TransactionList({ navigation, isOpened, maxNumber }: { n
                 data={transactionsForHomeScreen}
                 keyExtractor={(item, index) => `${item.id + index}`}
                 renderItem={({ item }) => (
-                    <View key={item.id} style={styles.transaction}>
-                        <Text style={styles.label}>{item.name}</Text>
-                        <Text style={[styles.amount, { color: item.isExpense ? COLORS.orange : COLORS.green }]}>
-                            {item.isExpense ? '-' : '+'}{item.amount}€
-                        </Text>
-                    </View>
+                    <TransactionsItem item={item} onClick={() => handleOpenModal(item)} />
                 )}
                 showsVerticalScrollIndicator={false}
                 ListEmptyComponent={<Text style={styles.label}>No transactions available</Text>}

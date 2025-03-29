@@ -9,6 +9,7 @@ import RootApp from './App';
 //Provider
 import { ProductsProvider } from '@/context/productsDataContext';
 import { TransactionProvider } from '@/context/transactionsDataContext';
+import { ModalProvider } from '@/context/modelContext';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -29,10 +30,12 @@ export default function RootLayout() {
   }
 
   return (
-    <ProductsProvider>
-      <TransactionProvider>
-        <RootApp />
-      </TransactionProvider>
-    </ProductsProvider>
+    <ModalProvider>
+      <ProductsProvider>
+        <TransactionProvider>
+          <RootApp />
+        </TransactionProvider>
+      </ProductsProvider>
+    </ModalProvider>
   );
 }
