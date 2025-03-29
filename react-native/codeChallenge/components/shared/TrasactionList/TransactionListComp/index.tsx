@@ -13,6 +13,8 @@ import TransactionListSkeleton from '../TransactionListSkeleton';
 
 //Utils
 import { useTransaction } from '@/utils/hooks/useTransaction';
+import { FlatList } from 'react-native-gesture-handler';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 export default function TransactionList({ navigation, isOpened, maxNumber }: { navigation: any; isOpened: boolean, maxNumber: number }) {
@@ -22,11 +24,12 @@ export default function TransactionList({ navigation, isOpened, maxNumber }: { n
         refetch();
     }, [refetch])
 
-    const transactionsForHomeScreen = maxNumber ? transactions.splice(0, maxNumber) : transactions
+    const transactionsForHomeScreen = maxNumber ? transactions.slice(0, maxNumber) : transactions;
 
     if (isLoading) return <TransactionListSkeleton />
 
     return (
+
         <View style={styles.container}>
             <View style={styles.header}>
                 <Text style={styles.title}>Recent transactions</Text>
@@ -37,14 +40,22 @@ export default function TransactionList({ navigation, isOpened, maxNumber }: { n
                     </TouchableOpacity>
                 ) : null}
             </View>
-            {transactionsForHomeScreen.map((item) => (
-                <View key={item.id} style={styles.transaction}>
-                    <Text style={styles.label}>{item.name}</Text>
-                    <Text style={[styles.amount, { color: item.isExpense ? COLORS.orange : COLORS.green }]}>
-                        {item.isExpense ? '-' : '+'}{item.amount}€
-                    </Text>
-                </View>
-            ))}
+
+            <FlatList
+                data={transactionsForHomeScreen}
+                keyExtractor={(item, index) => `${item.id + index}`}
+                renderItem={({ item }) => (
+                    <View key={item.id} style={styles.transaction}>
+                        <Text style={styles.label}>{item.name}</Text>
+                        <Text style={[styles.amount, { color: item.isExpense ? COLORS.orange : COLORS.green }]}>
+                            {item.isExpense ? '-' : '+'}{item.amount}€
+                        </Text>
+                    </View>
+                )}
+                showsVerticalScrollIndicator={false}
+                ListEmptyComponent={<Text style={styles.label}>No transactions available</Text>}
+            />
+
         </View>
     );
 }
