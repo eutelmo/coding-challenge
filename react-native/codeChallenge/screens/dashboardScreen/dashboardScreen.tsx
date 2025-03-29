@@ -15,7 +15,7 @@ export default function DashboardScreen({ navigation }: any) {
             <View >
                 <CarousselComp />
                 <Summary />
-                <TransactionList navigation={navigation} isOpened={false} />
+                <TransactionList navigation={navigation} isOpened={false} maxNumber={3} />
             </View>
         </SafeAreaView>
     )
