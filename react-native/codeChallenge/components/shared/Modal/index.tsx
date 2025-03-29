@@ -8,7 +8,7 @@ import {
 } from "react-native";
 
 //Context 
-import { ModalContext } from "@/context/modelContext";
+import { ModalContext } from "@/context/modalContext";
 
 //Styles
 import { styles } from "./styles";

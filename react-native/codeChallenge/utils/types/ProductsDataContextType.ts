@@ -7,6 +7,6 @@ export interface ProductsDataContextType {
     loadingProductsData: boolean;
     setLoadingProductsData: (loading: boolean) => void;
 
-    productsError: Error | null;
-    setProductsError: (error: Error | null) => void;
+    productsError: string | null;
+    setProductsError: (error: string | null) => void;
 }
