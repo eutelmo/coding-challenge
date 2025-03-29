@@ -15,7 +15,7 @@ export function TransactionProvider({ children }: ContextProps) {
     const [balance, setBalance] = useState(0);
 
     useEffect(() => {
-        console.log("transaction", transactions);
+        // console.log("transaction", transactions);
         setBalance(calculateBalance(transactions));
     }, [transactions]);
 
