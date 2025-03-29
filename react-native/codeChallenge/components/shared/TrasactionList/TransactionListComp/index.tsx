@@ -29,7 +29,6 @@ export default function TransactionList({ navigation, isOpened, maxNumber }: { n
     if (isLoading) return <TransactionListSkeleton />
 
     return (
-
         <View style={styles.container}>
             <View style={styles.header}>
                 <Text style={styles.title}>Recent transactions</Text>
